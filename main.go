@@ -27,5 +27,9 @@ func main() {
 		return c.JSON(http.StatusOK, map[string]string{"message": "Hello, from the golang World!"})
 	})
 
+	api.GET("/test", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, map[string]string{"message": "This is a test!"})
+	})
+
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%d", 3000)))
 }

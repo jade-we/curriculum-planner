@@ -1,7 +1,8 @@
 FROM node:20 as build-frontend
 WORKDIR /build
 
-COPY ./frontend/package.json ./frontend/pnpm-lock.yaml ./
+COPY ./frontend/package.json .
+COPY ./frontend/pnpm-lock.yaml .
 RUN pnpm install --frozen-lockfile
 
 COPY ./frontend .
@@ -19,10 +20,10 @@ COPY go.sum .
 # Download the modules
 RUN go mod download
 
-# Copy rest fo the code
+# Copy rest of the code
 COPY . .
 
-# Copt the frontend build into the expected folder
+# Copy the frontend build into the expected folder
 COPY --from=build-frontend /build/dist ./frontend/dist
 
 RUN CGO_ENABLED=0 ENV=prod go build -buildvcs=false -o ./bin/go-vite ./main.go
