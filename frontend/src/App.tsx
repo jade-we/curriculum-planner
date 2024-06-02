@@ -16,6 +16,8 @@ function App() {
     fetchData().catch((e) => console.error(e));
   }, []);
 
+  const [count, setCount] = useState(0);
+
   return (
     <>
       <div>
@@ -26,8 +28,10 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Golang + Vite + React</h1>
+      <h1>Golang + Vite + React!!!!!!!</h1>
       <h2>{messageFromServer}</h2>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
     </>
   );
 }
