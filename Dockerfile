@@ -7,7 +7,7 @@ RUN pnpm install --frozen-lockfile
 COPY ./frontend .
 RUN pnpm build
 
-FROM golang:1.21 as build
+FROM golang:1.22 as build
 
 # Set the Current Working Directory inside the container
 WORKDIR /build
