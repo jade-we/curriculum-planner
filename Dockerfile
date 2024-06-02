@@ -1,11 +1,11 @@
 FROM node:20 as build-frontend
 WORKDIR /build
 
-COPY ./frontend/package.json ./frontend/yarn.lock .
-RUN yarn install --frozen-lockfile
+COPY ./frontend/package.json ./frontend/pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
 COPY ./frontend .
-RUN yarn build
+RUN pnpm build
 
 FROM golang:1.21 as build
 

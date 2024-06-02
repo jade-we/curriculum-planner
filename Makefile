@@ -1,6 +1,6 @@
 build:
-	cd frontend && yarn build
+	cd frontend && pnpm build
 	ENV=prod go build -buildvcs=false -o ./bin/go-vite ./main.go
 
 dev:
-	cd frontend && yarn dev & air && fg
+	cd frontend && pnpm dev & air && fg
