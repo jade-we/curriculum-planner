@@ -1,0 +1,13 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_curriculum_dev
+    restart: always
+    environment:
+      - POSTGRES_DB=curriculum_planner
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./migration:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
